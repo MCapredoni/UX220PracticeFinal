@@ -23,12 +23,12 @@ footer{
 
 <body>
     <header>
-        <h1>Contact us</h1>
+        <h1>Contact Us</h1>
     </header>
     <main>
         <x-center>
-        <!-- TODO describe why this form will or will not work on the internet -->
-        <form action="localhost:8000" method="post">
+<!-- This Form as presented in the question will not work. With forms there are 2 components, the first being the form itself, which is present here. However, there is no server here to collect the data.--> 
+        <form action="localhost:8000" method="post"> 
             <div class="form-group">
                 <label for="name">Name</label>
                 <input class="form-control" id="name" type="text" name="Name">
@@ -38,23 +38,38 @@ footer{
                 <input class="form-control" id="email" type="email" name="Email" required>
             </div>
             <div class="form-group">
+                <label for="name">Subject</label>
+                <input class="form-control" id="subject" type="text" name="Subject" required>
+            </div>
+            <div class="form-group">
                 <label for="message">Message</label>
                 <textarea class="form-control" id="message" name="Message"></textarea>
             </div>
+            <x-right>
             <input class="btn btn-primary" type="submit" value="Submit" />
+            </x-right>
             </div>
         </form>
         </x-center>
     </main>
     <script>
         class CenterElement extends HTMLElement{
-        connectedCallback(){
+            connectedCallback(){
             this.innerHTML = 
             `<div style="text-align:center">${this.innerHTML}</div>`;
             }
         }
 
         customElements.define("x-center", CenterElement);
+
+        class RightElement extends HTMLElement{
+            connectedCallback(){
+            this.innerHTML = 
+            `<div style="text-align:right">${this.innerHTML}</div>`;
+            }
+        }
+
+        customElements.define("x-right", RightElement);
     </script>
     <footer>
         <p>Marc Capredoni</p>
